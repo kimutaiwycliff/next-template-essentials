@@ -1,9 +1,7 @@
-import TaskPage from "@/components/tables/TasksPage";
-
 const Home = () => {
   return (
     <div>
-      <TaskPage />
+      <p>Home</p>
     </div>
   );
 };
