@@ -160,4 +160,8 @@ export const gradesColumns: ColumnDef<Grade>[] = [
       return value.includes(row.getValue(id));
     },
   },
+  {
+    id: 'actions',
+    cell: ({ row }) => <DataTableRowActions row={row} />,
+  },
 ];

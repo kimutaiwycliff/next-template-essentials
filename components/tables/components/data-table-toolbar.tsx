@@ -6,16 +6,30 @@ import { X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { DataTableViewOptions } from "./data-table-view-options"
-
-import { priorities, statuses } from "../data/data"
 import { DataTableFacetedFilter } from "./data-table-faceted-filter"
 
+interface Option {
+  value: string,
+  label: string,
+  icon: any,
+}
+export interface FacetedFilterProps {
+  column: any;
+  title: string;
+  options: Option[];
+}
 interface DataTableToolbarProps<TData> {
-  table: Table<TData>
+  table: Table<TData>,
+  searchLabel?: string,
+  searchColumn?: string,
+  filters?: FacetedFilterProps[],
 }
 
 export function DataTableToolbar<TData>({
   table,
+  searchLabel,
+  searchColumn,
+  filters,
 }: DataTableToolbarProps<TData>) {
   const isFiltered = table.getState().columnFilters.length > 0
 
@@ -23,27 +37,26 @@ export function DataTableToolbar<TData>({
     <div className="flex items-center justify-between">
       <div className="flex flex-1 items-center space-x-2">
         <Input
-          placeholder="Filter tasks..."
-          value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
+          placeholder={`Filter ${searchLabel}...`}
+          value={(table.getColumn(`${searchColumn}`)?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
-            table.getColumn("title")?.setFilterValue(event.target.value)
+            table.getColumn(`${searchColumn}`)?.setFilterValue(event.target.value)
           }
           className="h-8 w-[150px] lg:w-[250px]"
         />
-        {table.getColumn("status") && (
-          <DataTableFacetedFilter
-            column={table.getColumn("status")}
-            title="Status"
-            options={statuses}
-          />
-        )}
-        {table.getColumn("priority") && (
-          <DataTableFacetedFilter
-            column={table.getColumn("priority")}
-            title="Priority"
-            options={priorities}
-          />
-        )}
+        {filters?.map((filter) => {
+          const column = table.getColumn(filter.column);
+          return (
+            column && (
+              <DataTableFacetedFilter
+                key={filter.column}
+                column={column}
+                title={filter.title}
+                options={filter.options}
+              />
+            )
+          );
+        })}
         {isFiltered && (
           <Button
             variant="ghost"
