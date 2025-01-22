@@ -8,8 +8,12 @@ import SideBarProvider from './SideBarProvider';
 
 export default function ClientProviders({
   children,
+  isSidebar = false,
+  isNavbar = false,
 }: {
   children: React.ReactNode;
+  isSidebar?: boolean;
+  isNavbar?: boolean;
 }) {
   return (
     <ReactQueryProvider>
@@ -20,7 +24,10 @@ export default function ClientProviders({
         disableTransitionOnChange
       >
         <Toaster position="top-right" reverseOrder={false} />
-        <SideBarProvider>{children}</SideBarProvider>
+        {}
+        <SideBarProvider isSidebar={isSidebar} isNavbar={isNavbar}>
+          {children}
+        </SideBarProvider>
       </ThemeProvider>
     </ReactQueryProvider>
   );
