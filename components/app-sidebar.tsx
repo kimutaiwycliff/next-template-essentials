@@ -88,7 +88,7 @@ export function AppSidebar() {
         <Image src="/logo.png" width={100} height={50} alt='' className='mx-auto mt-5'/>
       </SidebarHeader>
 
-      <SidebarContent className=" pt-[5rem]">
+      <SidebarContent className=" pt-[20px]">
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu className="gap-4">
@@ -100,7 +100,7 @@ export function AppSidebar() {
                     key={item.name}
                   >
                     <Link
-                      className={`py-5 px-5 text-lg  transition-colors flex items-center gap-4 font-semibold text-blue-100 ${
+                      className={`py-5 px-5 text-lg flex items-center gap-4 font-semibold ${
                         pathname.includes(item.href) ? " bg-blue-500 " : ""
                       }`}
                       href={item.href}
@@ -121,7 +121,7 @@ export function AppSidebar() {
             <SidebarMenuItem>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <SidebarMenuButton className='text-lg'>
+                  <SidebarMenuButton className=' font-semibold'>
                     <User2 /> Profile
                     <ChevronUp className="ml-auto" />
                   </SidebarMenuButton>
