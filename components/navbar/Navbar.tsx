@@ -1,3 +1,4 @@
+import { ModeToggle } from '../providers/theme-provider';
 import Profile from './Profile';
 import { SidebarTrigger } from '@/components/ui/sidebar';
 
@@ -9,7 +10,8 @@ const Navbar = () => {
           <SidebarTrigger />
           <h3>The Achievers Focus</h3>
         </div>
-        <div className="flex gap-5 items-center">
+        <div className="flex gap-3 items-center">
+          <ModeToggle />
           <Profile />
         </div>
 
