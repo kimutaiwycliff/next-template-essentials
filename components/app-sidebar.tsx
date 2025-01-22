@@ -101,7 +101,7 @@ export function AppSidebar() {
                   >
                     <Link
                       className={`py-5 px-5 text-lg flex items-center gap-4 font-semibold ${
-                        pathname.includes(item.href) ? " bg-blue-500 " : ""
+                        pathname.includes(item.href) ? " bg-primary " : ""
                       }`}
                       href={item.href}
                       key={item.name}
