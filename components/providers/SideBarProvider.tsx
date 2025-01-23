@@ -11,7 +11,7 @@ const SideBarProvider = ({
   isNavbar?: boolean;
 }) => {
   return (
-    <SidebarProvider>
+    <SidebarProvider defaultOpen={false}>
       {isSidebar && <AppSidebar />}
       <main className="w-full">
         {isNavbar && <Navbar isSidebar={isSidebar} />}
