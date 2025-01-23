@@ -107,7 +107,7 @@ export function AppSidebar() {
                       key={item.name}
                     >
                       <item.icon />
-                      <span>{item.name}</span>
+                      <span className='nav-hover-btn'>{item.name}</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
